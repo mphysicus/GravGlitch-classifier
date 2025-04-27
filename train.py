@@ -13,7 +13,16 @@ def train_model(model=None, num_epochs=epochs, optimizer=None):
     if optimizer is None:
         optimizer=torch.optim.Adam(model.parameters(), lr=learning_rate)
 
-    device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
+    if torch.cuda.is_available():
+        device = torch.device("cuda")
+        print(f"Using GPU: {torch.cuda.get_device_name(0)}")
+    elif torch.backends.mps.is_available():
+        device = torch.device("mps")
+        print("Using Apple Silicon GPU")
+    else:
+        device = torch.device("cpu")
+        print("Using CPU")
+
     model.to(device)
     best_val_loss = float('inf')
     checkpoint_dir = '_checkpoints'
@@ -32,6 +41,7 @@ def train_model(model=None, num_epochs=epochs, optimizer=None):
     train_loader = gravityspy_loader(train_dir, shuffle=True, batch_size=batch_size)
     val_loader = gravityspy_loader(val_dir, shuffle=False) if os.path.exists('val') else None
     loss_fn=nn.CrossEntropyLoss()
+    
     for epoch in range(num_epochs):
         # Training phase
         model.train()

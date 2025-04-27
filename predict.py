@@ -7,8 +7,16 @@ from config import val_dir
 
 def classify_glitches(list_of_img_paths):
     # Device configuration
-    device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
-    
+    if torch.cuda.is_available():
+        device = torch.device("cuda")
+        print(f"Using GPU: {torch.cuda.get_device_name(0)}")
+    elif torch.backends.mps.is_available():
+        device = torch.device("mps")
+        print("Using Apple Silicon GPU")
+    else:
+        device = torch.device("cpu")
+        print("Using CPU")
+        
     # Load trained model
     model = GravitySpyResNet()
     checkpoint_path = '_checkpoints/best_weights.pth'

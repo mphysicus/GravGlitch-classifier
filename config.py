@@ -1,3 +1,4 @@
+import torch
 # Dataset paths (update these to your actual paths!)
 #train_dir = "/storage/prakhar/gravity_spy_net/Augmented_data/train"  # Directory with class folders
 #val_dir = "/storage/prakhar/gravity_spy_net/Augmented_data/validation"      # Directory with class folders
