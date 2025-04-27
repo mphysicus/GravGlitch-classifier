@@ -1,9 +1,9 @@
 import torch
 import os
 from PIL import Image
-from .model import GravitySpyResNet
-from .dataset import gravityspy_transform  # Shared transformations
-from .config import val_dir
+from model import GravitySpyResNet
+from dataset import gravityspy_transform  # Shared transformations
+from config import val_dir
 
 def classify_glitches(list_of_img_paths):
     # Device configuration

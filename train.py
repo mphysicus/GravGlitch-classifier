@@ -2,9 +2,9 @@ import torch
 import torch.nn as nn
 import os
 from torch.optim.lr_scheduler import CosineAnnealingLR
-from .config import use_scheduler, min_lr, batch_size, num_classes, epochs, learning_rate, train_dir, val_dir, test_dir
-from .dataset import gravityspy_loader
-from .model import GravitySpyResNet
+from config import use_scheduler, min_lr, batch_size, num_classes, epochs, learning_rate, train_dir, val_dir, test_dir
+from dataset import gravityspy_loader
+from model import GravitySpyResNet
 
 def train_model(model=None, num_epochs=epochs, optimizer=None):
     if model is None:

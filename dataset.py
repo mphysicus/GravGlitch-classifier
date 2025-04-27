@@ -3,7 +3,7 @@ from torchvision import transforms
 from torch.utils.data import DataLoader
 from torchvision.datasets import ImageFolder
 from PIL import Image
-from .config import resize_x, resize_y
+from config import resize_x, resize_y
 
 original_height = 479
 original_width = 569

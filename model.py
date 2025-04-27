@@ -1,6 +1,6 @@
 import torch
 import torch.nn as nn
-from .config import input_channels, num_classes
+from config import input_channels, num_classes
 
 class ResidualBlock(nn.Module):
     def __init__(self, in_channels):
