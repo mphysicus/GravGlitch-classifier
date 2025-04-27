@@ -19,7 +19,14 @@ This project implements a convolutional neural network (CNN) with residual conne
 
 3. **Global Aggregation & Classification**  
    - Adaptive average pooling → 1×1 feature vector.  
-   - Fully connected layer for `num_classes` logits.  
+   - Fully connected layer for `num_classes` logits.
+
+**Key Features**
+- Input size: 224 x 224
+- Optimizer: AdamW
+- Loss Function: Cross Entropy loss function
+- LR Scheduler: CosineAnnealing LR scheduler
+- Number of classes: 22
 
 **Framework**: PyTorch 
 
@@ -32,3 +39,9 @@ This project implements a convolutional neural network (CNN) with residual conne
 ## Dataset
 
 - We use the Gravity Spy dataset which is a citizen scientist program for glitch classification in GW Detectors. The dataset was downloaded from Kaggle: [Gravity Spy (Gravitational waves)](https://www.kaggle.com/datasets/tentotheminus9/gravity-spy-gravitational-waves)
+- The dataset was already split into Train, Validation and Test dataset.
+
+## Additional Notes
+- Hardware: Training was accelerated using Nvidia A30 GPU, but it can also run on CPU with longer training time.
+- Accuracy: The model achieved an accuracy of approximately 95% on the validation set.
+- Data Augmentation: Implemented class-specific augmentation methods to ensure augmented images accurately reflect real-world characteristics.
